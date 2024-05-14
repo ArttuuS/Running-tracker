@@ -27,8 +27,6 @@ export default function HomeScreen() {
   const auth = getAuth(firebaseApp);
   const database = getDatabase(firebaseApp);
 
-  //Seperated stopwatch that updates continuesly (location updates currently every 500ms)
-
   const toggleTimer = () => {
     if (isRunning) {
       clearInterval(intervalRef.current);
