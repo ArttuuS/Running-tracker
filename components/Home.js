@@ -136,7 +136,7 @@ export default function HomeScreen() {
     setModalVisible(false);
   };
 
-  //LOCATION TRACKING AND POLYLINE DRAWING DONE WITH CHATGPT
+  //LOCATION TRACKING AND POLYLINE DRAWING HAS BEEN DONE WITH A HELP OF CHATGPT
 
   useEffect(() => {
     let interval;
