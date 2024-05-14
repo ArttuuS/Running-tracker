@@ -1,13 +1,13 @@
-Technologies used:
+#Technologies used:
 
-React Native
+-React Native
 
-React Native Elements
+-React Native Elements
 
-React Native Maps
+-React Native Maps
 
-Expo Location
+-Expo Location
 
-Firebase Realtime Database
+-Firebase Realtime Database
 
-Firebase Authentication
+-Firebase Authentication
