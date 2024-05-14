@@ -1,4 +1,4 @@
-#Technologies used:
+# Technologies used:
 
 -React Native
 
