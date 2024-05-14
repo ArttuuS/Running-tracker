@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React, { useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { ListItem } from "@rneui/themed";
 import { useFocusEffect } from "@react-navigation/native";
 
@@ -11,8 +11,9 @@ import { getAuth } from "firebase/auth";
 const database = getDatabase(firebaseApp);
 const auth = getAuth(firebaseApp);
 
-export default function AnalyticsScreen({ navigation }) {
+export default function AnalyticsScreen() {
   const [runs, setRuns] = useState([]);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -33,8 +34,10 @@ export default function AnalyticsScreen({ navigation }) {
               setRuns([]);
             }
           });
+          setIsSignedIn(true);
         } else {
           setRuns([]);
+          setIsSignedIn(false);
         }
       };
 
@@ -72,15 +75,35 @@ export default function AnalyticsScreen({ navigation }) {
 
   return (
     <View>
-      {runs.length === 0 ? (
-        <Text>No recorded runs</Text>
+      {isSignedIn ? (
+        <>
+          {runs.length === 0 ? (
+            <Text style={styles.signInText}>No recorded runs</Text>
+          ) : (
+            <FlatList
+              data={runs}
+              renderItem={renderItem}
+              keyExtractor={(item, index) => index.toString()}
+            />
+          )}
+        </>
       ) : (
-        <FlatList
-          data={runs}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        <Text style={styles.signInText}>Sign in to view your runs</Text>
       )}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  signInText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 300,
+  },
+});

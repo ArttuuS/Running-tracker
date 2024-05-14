@@ -42,7 +42,7 @@ export default function LeaderboardScreen() {
   return (
     <View style={styles.container}>
       {leaderboardData.length === 0 ? (
-        <Text>No recorded runs</Text>
+        <Text style={styles.signInText}>Sign in to view the leaderboard</Text>
       ) : (
         <>
           <Text style={styles.title}>Leaderboard</Text>
@@ -80,5 +80,10 @@ const styles = StyleSheet.create({
   },
   runs: {
     fontWeight: "bold",
+  },
+  signInText: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
